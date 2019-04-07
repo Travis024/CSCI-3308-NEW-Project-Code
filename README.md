@@ -1,9 +1,10 @@
-# CSCI-3308-Team-101-3-Project-Code
+# livBoulderPostgres
 
 Python(3.7.2)
 PostgreSQL(11.2)
 Psycopg2(2.7.7)- Python adapter for Postgres
-Flask-SQLAlchemy(2.1)- Flask extension that provides SQLAlchemy support
+Flask-SQLAlchemy(2.3.2)- Flask extension that provides SQLAlchemy support
+SQLAlchemy(1.3.2)
 Flask-Migrate(1.8.0)- Extension that supports SQLAlchemy database migrations
 
 
@@ -24,6 +25,13 @@ Installing Flask
 2. $ pip install flask
 
 Install other dependencies
-1. pip install psycopg2
-2. pip install Flask-SQLAlchemy===2.1
+1. pip install Flask-SQLAlchemy
+2. pip install psycopg2
 3. pip install Flask-Migrate==1.8.0
+
+
+Resources
+1. Problems with installing psycopg2 on mac
+    https://stackoverflow.com/questions/26288042/error-installing-psycopg2-library-not-found-for-lssl
+2. Using postgres through SQLAlchemy
+    https://www.compose.com/articles/using-postgresql-through-sqlalchemy/
