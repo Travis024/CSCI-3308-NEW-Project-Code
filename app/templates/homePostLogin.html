@@ -1,0 +1,284 @@
+{% extends "layout.html" %}
+
+{% block title %} current_user.username HomePage {% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homePostLogin.css') }}">
+<script type="text/javascript" src="{{url_for('static', filename='js/homePostLogin.js') }}"></script>
+{% endblock stylesheet %}
+
+
+{% block navbar %}
+<li class="nav-item">
+	<a class="nav-link navbar-writing" href="{{ url_for('quiz')}}">Re-Take Quiz </a>
+</li>
+{% endblock navbar %}
+
+{% block body %}<body onload="loadActivities();">{% endblock%}
+
+{% block content %}
+<!--Page Header-->
+<section class = "green-color" id="recommendations">
+	<div class="container">
+		<br>
+		<h1 class="grid-label cream-color text-center ">Your Recommended Activities</h1>
+		<br>
+		<br>
+	</div>
+
+	<!--This section is a card deck for each activity-->
+	<!--We will load in images, names, and descriptions based on results from recommendation quiz-->
+	 <div class="card-deck">
+
+		<!--Activity 1-->
+		<div class="card border-0">
+			<img id = "activity1img" class="card-img-top" src='../static/img/market.jpg'>
+			<div class="card-body text-center grayCard">
+				<h4 id = "activity1name" class="card-text">Boulder Farmers Market</h4>
+				<p id = "activity1description" class = "card-text">Looking for a casual - and delicious - stroll? Then look no further than the Boulder Farmers Market, open Wednesday nights and Saturday mornings.</p>
+			</div>
+		</div>
+
+		<!--Activity 2-->
+		<div class="card border-0">
+			<img id = "activity2img" class="card-img-top" src='../static/img/nederland.jpg'>
+			<div class="card-body text-center grayCard">
+				<h4 id = "activity2name" class="card-text">Nederland</h4>
+				<p id = "activity2description" class = "card-text">This small mountain town is perhaps just as cute as Boulder! Everything is locally owned, and there are plenty of walks throuhout town.</p>
+			</div>
+		</div>
+
+		<!--Activity 3-->
+		<div class="card border-0">
+			<img id = "activity3img" class="card-img-top" src='../static/img/southMesa.jpg'>
+			<div class="card-body text-center grayCard">
+				<h4 id = "activity3name" class="card-text">South Mesa Trail</h4>
+				<p id = "activity3description" class = "card-text">The South Mesa Trail isn't mentioned as much as some other hikes in Boulder, but that doesn't mean that it's not just as fun!</p>
+				<button type="button" class="btn btn-success" disabled>There's More Below!</button>
+			</div>
+		</div>
+
+		<!--Activity 4-->
+		<div class="card border-0">
+			<img id = "activity4img" class="card-img-top" src='../static/img/rayback.jpg'>
+			<div class="card-body text-center grayCard">
+				<h4 id = "activity4name" class="card-text">Rayback Collective</h4>
+				<p id = "activity4description" class = "card-text">Music, food, drinks, horsehoes, and cornhole... what more could you ask for?</p>
+			</div>
+		</div>
+
+		<!--Activity 5-->
+		 <div class="card border-0">
+			<img id = "activity5img" class="card-img-top" src='../static/img/eldorado.jpg'>
+			<div class="card-body text-center grayCard">
+				<h4 id = "activity5name" class="card-text">Eldorado Canyon</h4>
+				<p id = "activity5description" class = "card-text">Eldorado Canyon has plenty of hikes for all ages! It's a little far away, but it sure is worth it!</p>
+			</div>
+		</div>
+</div>
+
+<br>
+<br>
+
+<h1 class="grid-label cream-color text-center ">Maps and Weather</h1>
+
+<br>
+<br>
+
+<!--Contains the Google Maps API-->
+<div class="container">
+
+	<div class="row">
+
+		<!--Help from Google Help Pages for setting up API-->
+		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		<div id = "map" class="col-6" style = "height: 75vh; width: 75vh;">
+			<script>
+
+						function initAutocomplete() {
+							var map = new google.maps.Map(document.getElementById('map'), {
+								center: {lat: 40.014984, lng: -105.270546},
+								zoom: 13,
+								mapTypeId: 'roadmap'
+							});
+
+							// Create the search box and link it to the UI element.
+							var input = document.getElementById('pac-input');
+							var searchBox = new google.maps.places.SearchBox(input);
+							map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+							// Bias the SearchBox results towards current map's viewport.
+							map.addListener('bounds_changed', function() {
+								searchBox.setBounds(map.getBounds());
+							});
+
+							var markers = [];
+							// Listen for the event fired when the user selects a prediction and retrieve
+							// more details for that place.
+							searchBox.addListener('places_changed', function() {
+								var places = searchBox.getPlaces();
+
+								if (places.length == 0) {
+									return;
+								}
+
+								// Clear out the old markers.
+								markers.forEach(function(marker) {
+									marker.setMap(null);
+								});
+								markers = [];
+
+								// For each place, get the icon, name and location.
+								var bounds = new google.maps.LatLngBounds();
+								places.forEach(function(place) {
+									if (!place.geometry) {
+										console.log("Returned place contains no geometry");
+										return;
+									}
+									var icon = {
+										url: place.icon,
+										size: new google.maps.Size(71, 71),
+										origin: new google.maps.Point(0, 0),
+										anchor: new google.maps.Point(17, 34),
+										scaledSize: new google.maps.Size(25, 25)
+									};
+
+									// Create a marker for each place.
+									markers.push(new google.maps.Marker({
+										map: map,
+										icon: icon,
+										title: place.name,
+										position: place.geometry.location
+									}));
+
+									if (place.geometry.viewport) {
+										// Only geocodes have viewport.
+										bounds.union(place.geometry.viewport);
+									} else {
+										bounds.extend(place.geometry.location);
+									}
+								});
+								map.fitBounds(bounds);
+							});
+						}
+
+					</script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzmPkC6AJN54aJx75Y-YhuoA9J5LKckRU&libraries=places&callback=initAutocomplete" async defer></script>
+			 </div>
+
+			 <!--These are the scripts needed in order to work with the Darksky API-->
+			 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+			 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+			 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+			 <script>
+					$(document).ready(function() {
+						var url ='https://api.darksky.net/forecast/db22b59364315837d7cdf8a95013e6c6/40.014984,-105.270546'; //Place your DarkSky API Call Here
+						$.ajax({url:url, dataType:"jsonp"}).then(function(data) {
+
+							console.log(data);
+
+							var week_names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; //This is a helper array to help convert the day of the week [0-7] to a named value [Sunday - Saturday]
+
+							var unix_time = data.currently.time;//Retrieve the current timestamp
+							var javascript_time = new Date(unix_time * 1000);//Convert the unix time stamp to javascript
+							var currentDay = javascript_time.getDay();
+
+							document.getElementById('day1Header').innerHTML = week_names[currentDay];
+							document.getElementById('day1High').innerHTML = "High: " + data.daily.data[currentDay].temperatureMax + " F";
+							document.getElementById('day1Low').innerHTML = "Low: " + data.daily.data[currentDay].temperatureMin + " F";
+							document.getElementById('day1Wind').innerHTML = "Wind: " + data.daily.data[currentDay].windSpeed + " MPH";
+							document.getElementById('day1Rain').innerHTML = "Rain: " + data.daily.data[currentDay].precipProbability + "%";
+
+							currentDay = currentDay + 1;
+							if(currentDay > 6) currentDay = 0;
+
+							document.getElementById('day3Header').innerHTML = week_names[currentDay];
+							document.getElementById('day3High').innerHTML = "High: " + data.daily.data[currentDay].temperatureMax + " F";
+							document.getElementById('day3Low').innerHTML = "Low: " + data.daily.data[currentDay].temperatureMin + " F";
+							document.getElementById('day3Wind').innerHTML = "Wind: " + data.daily.data[currentDay].windSpeed + " MPH";
+							document.getElementById('day3Rain').innerHTML = "Rain: " + data.daily.data[currentDay].precipProbability + "%";
+
+							currentDay = currentDay + 1;
+							if(currentDay > 6) currentDay = 0;
+
+							document.getElementById('day2Header').innerHTML = week_names[currentDay];
+							document.getElementById('day2High').innerHTML = "High: " + data.daily.data[currentDay].temperatureMax + " F";
+							document.getElementById('day2Low').innerHTML = "Low: " + data.daily.data[currentDay].temperatureMin + " F";
+							document.getElementById('day2Wind').innerHTML = "Wind: " + data.daily.data[currentDay].windSpeed + " MPH";
+							document.getElementById('day2Rain').innerHTML = "Rain: " + data.daily.data[currentDay].precipProbability + "%";
+
+							currentDay = currentDay + 1;
+							if(currentDay > 6) currentDay = 0;
+
+							document.getElementById('day4Header').innerHTML = week_names[currentDay];
+							document.getElementById('day4High').innerHTML = "High: " + data.daily.data[currentDay].temperatureMax + " F";
+							document.getElementById('day4Low').innerHTML = "Low: " + data.daily.data[currentDay].temperatureMin + " F";
+							document.getElementById('day4Wind').innerHTML = "Wind: " + data.daily.data[currentDay].windSpeed + " MPH";
+							document.getElementById('day4Rain').innerHTML = "Rain: " + data.daily.data[currentDay].precipProbability + "%";
+						})
+					});
+				</script>
+
+		<!--This is where the cards for the weather forecast go-->
+		 <div class="col">
+
+					 <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-top: 10%;">
+						 <div class="card-header" id = "day1Header"></div>
+							<div class="card-body">
+								<p class="card-text text-left" id = "day1High"></p>
+								<p class="card-text text-left" id = "day1Low"></p>
+								<p class="card-text text-left" id = "day1Wind"></p>
+								<p class="card-text text-left" id = "day1Rain"></p>
+							</div>
+						</div>
+
+
+
+						<div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-top: 10%;">
+							<div class="card-header" id = "day2Header"></div>
+							 <div class="card-body">
+								 <p class="card-text text-left" id = "day2High"></p>
+								 <p class="card-text text-left" id = "day2Low"></p>
+								 <p class="card-text text-left" id = "day2Wind"></p>
+								 <p class="card-text text-left" id = "day2Rain"></p>
+							 </div>
+						 </div>
+
+
+		 </div>
+
+		 <div class="col">
+
+			 <div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-top: 10%;">
+				 <div class="card-header" id = "day3Header"></div>
+					<div class="card-body">
+						<p class="card-text text-left" id = "day3High"></p>
+						<p class="card-text text-left" id = "day3Low"></p>
+						<p class="card-text text-left" id = "day3Wind"></p>
+						<p class="card-text text-left" id = "day3Rain"></p>
+					</div>
+				</div>
+
+
+
+				<div class="card text-white bg-success mb-3" style="max-width: 18rem; margin-top: 10%;">
+					<div class="card-header" id = "day4Header"></div>
+					 <div class="card-body">
+						 <p class="card-text text-left" id = "day4High"></p>
+						 <p class="card-text text-left" id = "day4Low"></p>
+						 <p class="card-text text-left" id = "day4Wind"></p>
+						 <p class="card-text text-left" id = "day4Rain"></p>
+					 </div>
+				 </div>
+
+
+		 </div>
+
+
+		</div>
+
+		</div>
+
+</section>
+
+{% endblock content %}

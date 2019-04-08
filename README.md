@@ -35,3 +35,5 @@ Resources
     https://stackoverflow.com/questions/26288042/error-installing-psycopg2-library-not-found-for-lssl
 2. Using postgres through SQLAlchemy
     https://www.compose.com/articles/using-postgresql-through-sqlalchemy/
+3. Database migrations
+    https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
