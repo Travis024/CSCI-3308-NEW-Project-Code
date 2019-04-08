@@ -20,15 +20,32 @@ Activating the virtual environment
 3. For Windows: venv/Scripts/activate
 4. Close Virtual environment: $deactivate
 
-Installing Flask
-1. activate virtual enviornment
-2. $ pip install flask
-
 Install other dependencies
 1. Cd into directory
 2. activate your virtualenv.
 3. run: pip install -r requirements.txt in your shell.
 
+Setup Database Locally **** DO THIS BEFORE RUNNING ***
+1. cd into project directory
+2. create a file .flaskenv
+3. Paste {
+  FLASK_APP=livBoulder.py
+  APP_SETTINGS="config.DevelopmentConfig"
+  DATABASE_URL="postgresql+psycopg2://user:password@localhost:5432/nameOfDatabase"
+  }
+4. REMEMBER YOU NEED TO CONFIGURE A POSTGRES DATABASE LOCALLY FOR THIS TO WORK
+5. You will need to input your parameters to you local postgres db into the DATABASE_URL above given that:
+    user = your local db user
+    password = password associated with that user
+    nameOfDatabase = the name you gave to the database
+6. with venv running run: flask db init in your shell.
+7. then run: flask db migrate
+8. then run: flask db upgrade
+9. Now your local postgres db should be set up with the app
+
+To RUN app
+1. make sure your virtualenv is running
+2. run: flask run
 
 Resources
 1. Problems with installing psycopg2 on mac
