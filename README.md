@@ -1,11 +1,11 @@
 # livBoulderPostgres
-
-Python(3.7.2)
-PostgreSQL(11.2)
-Psycopg2(2.7.7)- Python adapter for Postgres
-Flask-SQLAlchemy(2.3.2)- Flask extension that provides SQLAlchemy support
-SQLAlchemy(1.3.2)
-Flask-Migrate(1.8.0)- Extension that supports SQLAlchemy database migrations
+Requirements
+1. Python(3.7.2)
+2. PostgreSQL(11.2)
+3. Psycopg2(2.7.7)- Python adapter for Postgres
+3. Flask-SQLAlchemy(2.3.2)- Flask extension that provides SQLAlchemy support
+4. SQLAlchemy(1.3.2)
+5. Flask-Migrate(1.8.0)- Extension that supports SQLAlchemy database migrations
 
 
 Install virtualenv (Virtual Python Enviornment)
@@ -25,9 +25,9 @@ Installing Flask
 2. $ pip install flask
 
 Install other dependencies
-1. pip install Flask-SQLAlchemy
-2. pip install psycopg2
-3. pip install Flask-Migrate==1.8.0
+1. Cd into directory
+2. activate your virtualenv.
+3. run: pip install -r requirements.txt in your shell.
 
 
 Resources
