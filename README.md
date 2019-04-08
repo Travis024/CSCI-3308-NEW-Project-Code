@@ -23,7 +23,7 @@ Activating the virtual environment
 Install other dependencies
 1. Cd into directory
 2. activate your virtualenv.
-3. run: ```pip install -r requirements.tx ``` in your shell.
+3. run: ```pip install -r requirements.txt``` in your shell.
 
 Setup Database Locally **** DO THIS BEFORE RUNNING ***
 1. cd into project directory
