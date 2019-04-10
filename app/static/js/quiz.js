@@ -23,5 +23,4 @@ function countYes(){
   var numYes = numYesQuery.length;
 
   sessionStorage.setItem("countYes", numYes);
-  alert(sessionStorage.getItem("countYes"));
 }
