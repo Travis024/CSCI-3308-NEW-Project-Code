@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 {% block body %}{% endblock %}
-<nav class="navbar sticky-top navbar-default navbar-expand-lg">
+<nav class="navbar sticky-top navbar-default navbar-expand-lg" style = 'background-color: #75B247'>
   <a class="navbar-brand" href="home.html">
   <!-- This is where we would add a logo to our nav bar if we want it -->
   <!--<img class="rounded-circle" src="../resources/img/cu_boulder_logo.jpg" alt="" width="30" height="30"> -->
@@ -40,40 +40,6 @@
 
   {% block content %}{% endblock %}
 
-  <!--Page footer-->
-<section class = "footer">
-  <footer class="page-footer font-small unique-color-dark pt-4">
-      <div class="container">
-        <ul class="list-unstyled list-inline text-center py-2">
-          <li class="list-inline-item">
-            <h5 class="mb-1" style = "color: white">Register For Free Today: </h5>
-          </li>
-          <li class="list-inline-item">
-            <a href = "{{ url_for('register')}}" class = "nav-link navbar-writing"><h5>Sign up!</h5></a>
-          </li>
-        </ul>
-        <!--Get the fonts from an external stylesheet | Styled in our CSS-->
-        <ul class = "list-unstyled list-inline text-center py-2">
-          <li class = "list-inline-item">
-            <a href="" class="fa fa-facebook"></a>
-          </li>
-          <li class = "list-inline-item">
-            <a href="" class="fa fa-twitter"></a>
-          </li>
-          <li class = "list-inline-item">
-            <a href="" class="fa fa-google"></a>
-          </li>
-          <li class = "list-inline-item">
-            <a href="" class="fa fa-reddit"></a>
-          </li>
-        </ul>
-        <a href = "#toTop" class = "nav-link navbar-writing text-center"><h6>Return to Top</h6></a>
-      </div>
-      <div class="footer-copyright text-center py-3" style = "color: white">© 2019 Copyright:
-        <p> LivBoulder.com</p>
-      </div>
-    </footer>
-  </section>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
