@@ -124,6 +124,7 @@
 		</div>
 		 <div class="card border-0">
 			<div class="card-body text-center green-color">
+				<img class="card-img-top rounded-circle" src='../static/img/yangPhoto.jpg' alt="Yang image" >
 				<h4 class="card-text cream-color">Yang</h4>
 			</div>
 		</div>
@@ -133,5 +134,40 @@
 			</div>
 		</div>
 </div>
+</section>
+
+<!--Page footer-->
+<section class = "footer">
+<footer class="page-footer font-small unique-color-dark pt-4">
+		<div class="container">
+			<ul class="list-unstyled list-inline text-center py-2">
+				<li class="list-inline-item">
+					<h5 class="mb-1" style = "color: white">Register For Free Today: </h5>
+				</li>
+				<li class="list-inline-item">
+					<a href = "{{ url_for('register')}}" class = "nav-link navbar-writing"><h5>Sign up!</h5></a>
+				</li>
+			</ul>
+			<!--Get the fonts from an external stylesheet | Styled in our CSS-->
+			<ul class = "list-unstyled list-inline text-center py-2">
+				<li class = "list-inline-item">
+					<a href="" class="fa fa-facebook"></a>
+				</li>
+				<li class = "list-inline-item">
+					<a href="" class="fa fa-twitter"></a>
+				</li>
+				<li class = "list-inline-item">
+					<a href="" class="fa fa-google"></a>
+				</li>
+				<li class = "list-inline-item">
+					<a href="" class="fa fa-reddit"></a>
+				</li>
+			</ul>
+			<a href = "#toTop" class = "nav-link navbar-writing text-center"><h6>Return to Top</h6></a>
+		</div>
+		<div class="footer-copyright text-center py-3" style = "color: white">© 2019 Copyright:
+			<p> LivBoulder.com</p>
+		</div>
+	</footer>
 </section>
 {% endblock content %}
