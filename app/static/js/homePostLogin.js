@@ -45,10 +45,7 @@ return numberArray;
 }
 
 //Based on how many 'Yes' responses there were, we now load in activities for the user.
-function loadActivities(){
-
-  //Retrieve the number of 'Yes' responses from the 'Quiz' page
-  var numYes = parseInt(sessionStorage.getItem("countYes"));
+function loadActivities(numYes){
 
   //Shuffle the array so that we get a unique ordering
   shuffleArray(numbers);
