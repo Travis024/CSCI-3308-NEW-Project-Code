@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %} current_user.username HomePage {% endblock title %}
+{% block title %} {{ current_user.username }} HomePage {% endblock title %}
 
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/homePostLogin.css') }}">
@@ -14,12 +14,14 @@
 </li>
 {% endblock navbar %}
 
-{% block body %}<body onload="loadActivities();">{% endblock%}
+{% block body %}<body onload="loadActivities({{ current_user.recommendScore }});">{% endblock%}
 
 {% block content %}
 <!--Page Header-->
 <section class = "green-color" id="recommendations">
 	<div class="container">
+		<br>
+		<h3 class="grid-label cream-color text-center ">Hi {{current_user.firstName}}! </h3>
 		<br>
 		<h1 class="grid-label cream-color text-center ">Your Recommended Activities</h1>
 		<br>

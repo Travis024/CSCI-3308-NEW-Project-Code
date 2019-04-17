@@ -10,8 +10,9 @@ function homeAlert(){
 //If the user is ready to submit, they can do so. Otherwise, they can go back and change their answers.
 function submitAlert(){
   var Ans = confirm("Have you checked over all of your answers to make sure they properly reflect the activities you're looking for?");
-    if(Ans==true)
+    if(Ans==true){
       document.getElementById('submitButton').href = "/home";
+    }
     else
       event.preventDefault();
 }
@@ -23,4 +24,13 @@ function countYes(){
   var numYes = numYesQuery.length;
 
   sessionStorage.setItem("countYes", numYes);
+
+  $.ajax({
+    type: "POST",
+    contentType: "application/json;charset=utf-8",
+    url: $SCRIPT_ROOT + '/returner',
+    traditional: "true",
+    data: JSON.stringify({numYes}),
+    dataType: "json"
+  });
 }

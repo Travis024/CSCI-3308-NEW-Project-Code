@@ -11,14 +11,16 @@ class User(UserMixin, db.Model):
     email = db.Column('email', db.String, unique=True)
     username = db.Column('username', db.String, unique=True)
     password = db.Column('password', db.String, nullable=False)
+    recommendScore = db.Column('recommendScore', db.String)
 
     def __init__(self, firstName, lastName, email,
-                username, password):
+                username, password, recommendScore):
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.username = username
         self.set_password(password)
+        self.recommendScore = recommendScore
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+    <script type="text/javascript"> $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}; </script>
     <script type="text/javascript" src="{{url_for('static', filename='js/quiz.js') }}"></script>
     <title>LivBoulder Quiz</title>
   	<link rel='icon' href='../static/img/tabIcon.png' type='image/x-icon'/>
       <!-- Bootstrap core CSS -->
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
   </head>
   <body>
 
