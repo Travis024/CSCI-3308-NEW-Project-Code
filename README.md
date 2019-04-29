@@ -16,7 +16,7 @@ LivBoulder, an online outdoor activity finding website, seeks to combat this exa
 
 The folder "app" contains a folder for all of the templates for our HTML pages. Further, it contains the folder "static", which contains an image folder, a CSS folder, and a folder for all JavaScript files.
 
-The folder "Databases" contains some of our database mock-ups, though actual database activity when the app is running is handled by Flask, found within the "\__pycache__" and "migrations" folders.
+The folder "Databases" contains some of our database mock-ups, though actual database activity when the app is running is handled through the "config.py" file.
 
 "TEST CASES" contains all of the test cases that were run to test the application.
 
