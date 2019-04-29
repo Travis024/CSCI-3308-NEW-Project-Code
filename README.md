@@ -18,6 +18,10 @@ The folder "Databases" contains some of our database mock-ups, though actual dat
 
 ## Running the Application
 
+To view the application online, please visit https://livboulder.herokuapp.com/home
+
+If you're interested in running the application locally, follow the steps provided below.
+
 ### Requirements
 1. Python(3.7.2)
 2. PostgreSQL(11.2)
