@@ -2,6 +2,8 @@
 
 ## About
 
+VIEW VIDEO: https://vimeo.com/333212596
+
 This is the project code for Team 101-3 in CSCI 3308. Over the course of the semester we put our newly learned skills to use as we built a Boulder-based activity recommendation web application named LivBoulder.
 
 Boulder, Colorado is a place with adventures and activities for everybody, but that doesn’t mean that finding the perfect thing to do on a gorgeous Colorado day is easy! Making choices can often be rather difficult, and residents of Boulder end up spending more time on the internet looking up what to do than actually getting outside and enjoying mother nature!
