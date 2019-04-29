@@ -2,6 +2,8 @@
 
 ## About
 
+VIEW APPLICATION ONLINE: https://livboulder.herokuapp.com/home
+
 VIEW VIDEO: https://vimeo.com/333212596
 
 This is the project code for Team 101-3 in CSCI 3308. Over the course of the semester we put our newly learned skills to use as we built a Boulder-based activity recommendation web application named LivBoulder.
@@ -19,8 +21,6 @@ The folder "Databases" contains some of our database mock-ups, though actual dat
 "TEST CASES" contains all of the test cases that were run to test the application.
 
 ## Running the Application
-
-To view the application online, please visit https://livboulder.herokuapp.com/home
 
 If you're interested in running the application locally, follow the steps provided below.
 
