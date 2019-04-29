@@ -14,6 +14,8 @@ The folder "app" contains a folder for all of the templates for our HTML pages. 
 
 The folder "Databases" contains some of our database mock-ups, though actual database activity when the app is running is handled by Flask, found within the "\__pycache__" and "migrations" folders.
 
+"TEST CASES" contains all of the test cases that were run to test the application.
+
 ## Running the Application
 
 ### Requirements
